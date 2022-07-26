@@ -2,7 +2,7 @@
   <div class="recommend">
     <div class="recommend-item" v-for="item in recommends.slice(0, 4)" :key="item.id">
       <a href="" @click.prevent="goDetail(item.id)">
-        <img :src="item.cover_url" alt="">
+        <img v-lazy="item.cover_url" alt="">
         <div>{{ item.title }}</div>
       </a>
     </div>
@@ -32,26 +32,24 @@ export default {
 };
 </script>
  <style scoped lang="scss">
- .recommend {
-   display: flex;
-   width: 100%;
-   text-align: center;
-   padding: 15px 0 30px;
-   border-bottom: 8px solid #EEE;
-   font-size: 12px;
- 
- }
- 
- .recommend-item {
-   flex: 1;
-   padding: 10px;
-   box-sizing: border-box;
- 
- 
-   img {
-     width: 50px;
-     height: 50px;
-     margin-bottom: 10px;
-   }
- }
- </style>
+.recommend {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0 30px;
+  border-bottom: 8px solid #eee;
+  font-size: 12px;
+}
+
+.recommend-item {
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+
+  img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+}
+</style>

@@ -37,33 +37,33 @@ export default {
 };
 </script>
  <style scoped lang="scss">
- .nav-bar {
-   display: flex;
-   background-color: var(--color-tint);
-   color: #fff;
-   position: fixed;
-   left: 0;
-   right: 0;
-   top: 0;
-   z-index: 9;
-   height: 45px;
-   line-height: 45px;
-   text-align: center;
-   box-shadow: 0 2px rgba(100, 100, 100, 0.1);
- }
- 
- .left,
- .right {
-   width: 60px;
- }
- 
- .left img {
-   width: 45px;
-   padding: 12px;
- }
- 
- .center {
-   //  background: red;
-   flex: 1;
- }
- </style>
+.nav-bar {
+  display: flex;
+  background-color: var(--color-tint);
+  color: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  box-shadow: 0 2px rgba(100, 100, 100, 0.1);
+}
+
+.left,
+.right {
+  width: 60px;
+}
+
+.left img {
+  width: 45px;
+  padding: 12px;
+}
+
+.center {
+  //  background: red;
+  flex: 1;
+}
+</style>

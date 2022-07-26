@@ -1,5 +1,12 @@
 <template>
-  <router-view />
+  <!-- <router-view /> -->
+  <router-view v-slot="{ Component }">
+    <transition>
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </transition>
+  </router-view>
   <div id="nav">
     <router-link class="tab-bar-item" to="/">
       <div class="icon">
@@ -15,7 +22,9 @@
     </router-link>
     <router-link class="tab-bar-item" to="/shopcar">
       <div class="icon">
-        <i class="iconfont icon-shopcar"></i>
+        <van-badge :content="0" max="9">
+          <i class="iconfont icon-shopcar"></i>
+        </van-badge>
       </div>
       <div>购物车</div>
     </router-link>
@@ -29,8 +38,8 @@
 </template>
 
 <style lang="scss" >
-@import './assets/css/base.css';
-@import './assets/css/iconfont.css';
+@import "./assets/css/base.css";
+@import "./assets/css/iconfont.css";
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -73,6 +82,5 @@
     vertical-align: middle;
     display: inline-block;
   }
-
 }
 </style>
