@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Notify } from 'vant';
 export function request(config) {
   const instance = axios.create({
     baseURL: 'https://api.shop.eduwork.cn',
@@ -22,6 +23,8 @@ export function request(config) {
     // 有需要授权才可以访问的接口，统一去login授权
 
     // 如果有错误，这里面会去处理，显示错误信息
+    Notify(err.response.data);
+    console.log('err', err.response.data.errors[Object.keys(err.response.data.errors)][0]);
   })
   return instance(config)
 }

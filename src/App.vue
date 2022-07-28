@@ -1,12 +1,12 @@
 <template>
-  <!-- <router-view /> -->
-  <router-view v-slot="{ Component }">
+  <router-view />
+  <!-- <router-view v-slot="{ Component }">
     <transition>
       <keep-alive>
         <component :is="Component" />
       </keep-alive>
     </transition>
-  </router-view>
+  </router-view> -->
   <div id="nav">
     <router-link class="tab-bar-item" to="/">
       <div class="icon">

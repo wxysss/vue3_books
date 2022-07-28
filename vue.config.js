@@ -4,11 +4,11 @@ module.exports = {
       alias: {
         'assets': '@/assets',
         'components': '@/components',
-        'network': '@/components',
+        'network': '@/network',
         'utils': '@/utils',
         'views': '@/views',
       }
     }
   },
-  publicPath: './'
+  publicPath: '/'
 }

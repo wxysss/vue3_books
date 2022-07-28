@@ -8,7 +8,7 @@ const Category = () => import('../views/category/Categroy.vue')
 const Detil = () => import('../views/detail/Detail.vue')
 const Profile = () => import('../views/profile/Profile.vue')
 const ShopCar = () => import('../views/shopcar/ShopCar.vue')
-
+const Register = ()=>import ('../views/profile/Register.vue')
 const routes = [{
     path: '',
     name: 'home',
@@ -57,10 +57,19 @@ const routes = [{
       title: '图书-购物车'
     }
   },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register, // 注册
+    meta: {
+      title: '图书-用户注册'
+    }
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
+  // hash: createWebHashHistory(process.env.BASE_URL),
   routes
 })
 router.beforeEach((to, from, next) => {
