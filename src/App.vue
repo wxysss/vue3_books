@@ -20,9 +20,9 @@
       </div>
       <div>分类</div>
     </router-link>
-    <router-link class="tab-bar-item" to="/shopcar">
+    <router-link class="tab-bar-item" to="/shopcart">
       <div class="icon">
-        <van-badge :content="0" max="9">
+        <van-badge :content="$store.state.cartCount" max="9">
           <i class="iconfont icon-shopcar"></i>
         </van-badge>
       </div>
@@ -36,6 +36,20 @@
     </router-link>
   </div>
 </template>
+<script>
+import { onMounted } from 'vue'
+import { useStore } from "vuex";
+export default {
+  setup () {
+    const store = useStore()
+    onMounted(() => {
+      store.dispatch('updateCart')
+    })
+
+  },
+}
+</script>
+
 
 <style lang="scss" >
 @import "./assets/css/base.css";
@@ -57,7 +71,7 @@
   right: 0;
   bottom: 0;
   box-shadow: 0 -3px 1px rgba(100, 100, 00, 0.1);
-
+  z-index: 99;
   a {
     // font-weight: bold;
     color: var(--color-text);

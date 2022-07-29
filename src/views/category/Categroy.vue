@@ -35,7 +35,7 @@ import {
 
 } from 'vue'
 import { useRouter } from 'vue-router'
-import { getCategory, getCategoryGoods } from "../../network/Category";
+import { getCategory, getCategoryGoods } from "../../network/category";
 import BScroll from 'better-scroll'
 export default {
   name: 'Category',

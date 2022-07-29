@@ -15,6 +15,9 @@
           <van-field v-model="email" name="电子邮箱" label="电子邮箱" placeholder="电子邮箱" :rules="[{ required: true, message: '请输入正确的电子邮箱格式' }]" />
         </van-cell-group>
         <div style="margin: 16px;">
+          <div class="link-login" @click="$router.push({path:'/login'})">
+            已有帐号, 立即登录
+          </div>
           <van-button round block color="#44b883" native-type="submit">
             提交
           </van-button>
@@ -29,9 +32,13 @@
 import NavBar from 'components/common/navbar/NavBar.vue';
 import { ref, reactive, toRefs } from "vue";
 import { register } from "network/user";
-import { Notify } from 'vant';
+import { Notify, Toast } from 'vant';
+import {
+  useRouter
+} from "vue-router";
 export default {
   setup () {
+    const router = useRouter();
     const userinfo = reactive({
       name: '',
       password: '',
@@ -44,6 +51,15 @@ export default {
         Notify('两次密码不一致');
       } else {
         register(userinfo).then(res => {
+          // eduwork@lmonkey.com user123
+          if (res.status == '201') {
+            Toast.success('注册成功')
+            setTimeout(() => {
+              router.push({ path: '/login' })
+            }, 1000);
+          }
+          userinfo.password_confirmation = ''
+          userinfo.password = ''
           console.log(res);
         })
       }
@@ -59,4 +75,11 @@ export default {
 };
     </script>
  <style scoped lang="scss">
+.link-login {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #42b983;
+  display: block;
+  text-align: left;
+}
 </style>

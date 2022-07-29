@@ -2,13 +2,18 @@ import {
   createRouter,
   createWebHistory
 } from 'vue-router'
+import { Store } from 'vuex'
 // import HomeView from '../views/HomeView.vue'
 const Home = () => import('../views/home/Home.vue')
 const Category = () => import('../views/category/Categroy.vue')
 const Detil = () => import('../views/detail/Detail.vue')
 const Profile = () => import('../views/profile/Profile.vue')
-const ShopCar = () => import('../views/shopcar/ShopCar.vue')
+const ShopCart = () => import('../views/shopcar/ShopCar.vue')
 const Register = ()=>import ('../views/profile/Register.vue')
+const Login = ()=>import ('../views/profile/Login.vue')
+
+import { Notify,Toast } from "vant";
+import store from '../store'
 const routes = [{
     path: '',
     name: 'home',
@@ -46,15 +51,17 @@ const routes = [{
     name: 'Profile',
     component: Profile, // 个人中心
     meta: {
-      title: '图书-个人中心'
+      title: '图书-个人中心',
+      isAuthRequired:true
     }
   },
   {
-    path: '/shopcar',
-    name: 'ShopCar',
-    component: ShopCar, // 购物车
+    path: '/shopcart',
+    name: 'ShopCart',
+    component: ShopCart, // 购物车
     meta: {
-      title: '图书-购物车'
+      title: '图书-购物车',
+      isAuthRequired:true
     }
   },
   {
@@ -63,6 +70,14 @@ const routes = [{
     component: Register, // 注册
     meta: {
       title: '图书-用户注册'
+    }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login, // 登录
+    meta: {
+      title: '图书-用户登录'
     }
   },
 ]
@@ -74,7 +89,13 @@ const router = createRouter({
 })
 router.beforeEach((to, from, next) => {
   // 如果没有登录，跳转去login
-  next();
+  if(to.meta.isAuthRequired&&store.state.user.isLogin === false){
+    Notify('您还没有登录, 请先登录')
+    return next('/login')
+  }else{
+    next();
+  }
+
   // 控制路由跳转时路径变化和标签页名字
   document.title = to.meta.title
 })
