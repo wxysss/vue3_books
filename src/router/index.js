@@ -11,6 +11,8 @@ const Profile = () => import('../views/profile/Profile.vue')
 const ShopCart = () => import('../views/shopcar/ShopCar.vue')
 const Register = ()=>import ('../views/profile/Register.vue')
 const Login = ()=>import ('../views/profile/Login.vue')
+const Address = ()=>import ('../views/profile/Address.vue')
+const AddressEdit = ()=>import ('../views/profile/AddressEdit.vue')
 
 import { Notify,Toast } from "vant";
 import store from '../store'
@@ -23,7 +25,7 @@ const routes = [{
     }
   },
   {
-    path: '/',
+    path: '/home',
     name: 'DefaultHome',
     component: Home, // 首页
     meta: {
@@ -61,6 +63,24 @@ const routes = [{
     component: ShopCart, // 购物车
     meta: {
       title: '图书-购物车',
+      isAuthRequired:true
+    }
+  },
+  {
+    path: '/address',
+    name: 'Address',
+    component: Address, // 地址列表
+    meta: {
+      title: '图书-地址列表',
+      isAuthRequired:true
+    }
+  },
+  {
+    path: '/addressedit',
+    name: 'AddressEdit',
+    component: AddressEdit, // 地址编辑
+    meta: {
+      title: '图书-地址编辑',
       isAuthRequired:true
     }
   },
