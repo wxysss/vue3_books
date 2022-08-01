@@ -11,8 +11,12 @@ const Profile = () => import('../views/profile/Profile.vue')
 const ShopCart = () => import('../views/shopcar/ShopCar.vue')
 const Register = ()=>import ('../views/profile/Register.vue')
 const Login = ()=>import ('../views/profile/Login.vue')
-const Address = ()=>import ('../views/profile/Address.vue')
 const AddressEdit = ()=>import ('../views/profile/AddressEdit.vue')
+const Address = ()=>import ('../views/profile/Address.vue')
+const CreateOrder = ()=>import ('../views/order/CreateOrder.vue')
+const Order = ()=>import ('../views/order/Order.vue')
+const OrderDetail = ()=>import ('../views/order/OrderDetail.vue')
+
 
 import { Notify,Toast } from "vant";
 import store from '../store'
@@ -81,6 +85,33 @@ const routes = [{
     component: AddressEdit, // 地址编辑
     meta: {
       title: '图书-地址编辑',
+      isAuthRequired:true
+    }
+  },
+  {
+    path: '/createorder',
+    name: 'CreateOrder',
+    component: CreateOrder, // 创建订单
+    meta: {
+      title: '图书-创建订单',
+      isAuthRequired:true
+    }
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: Order, // 订单
+    meta: {
+      title: '图书-订单',
+      isAuthRequired:true
+    }
+  },
+  {
+    path: '/orderdetail',
+    name: 'OrderDetail',
+    component: OrderDetail, // 订单详情
+    meta: {
+      title: '图书-订单详情',
       isAuthRequired:true
     }
   },

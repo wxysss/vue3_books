@@ -67,20 +67,29 @@ export default {
     </script>
  <style scoped lang="scss">
 .address-box {
-  height: 300px;
+  // height: 300px;
+  height: 100%;
   .van-radio {
     display: none;
   }
   .address-item {
+    height: 100%;
     margin-top: 45px;
+    // background: pink;
+    overflow: scroll;
     .van-button {
       background: var(--color-tint);
       border-color: var(--color-tint);
     }
   }
 }
+.van-address-list {
+  height: 90vh;
+  overflow: scroll;
+  padding-bottom: 90px;
+}
 :deep .van-address-list__bottom {
-  bottom: 100px !important;
+  bottom: 50px !important;
 }
 :deep .van-button--danger {
   background: var(--color-tint) !important;
