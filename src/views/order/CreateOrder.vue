@@ -30,10 +30,21 @@
     </div>
     <van-submit-bar class="submit-all" :price="total*100" button-text="生成订单" @submit="handleCreateOrder">商品金额</van-submit-bar>
     <van-popup closeable v-model:show="showPay" close-on-click-overlay="false" position="bottom" :style="{ height: '30%' }" @close="close">
-      <div :style="{width:'90%',margin: '0 auto',padding:'50px 0'}">
+      <!-- <div :style="{width:'90%',margin: '0 auto',padding:'50px 0'}">
         <van-button :style="{marginBottom:'10px'}" color="#1989fa" block>支付宝支付</van-button>
         <van-button color="#4fc08d" block>微信支付</van-button>
-      </div>
+      </div> -->
+      <van-grid :border="false" :column-num="2">
+        <van-grid-item>
+          支付宝二维码<br>
+          <van-image width="150" height="150" :src="aliyun" />
+        </van-grid-item>
+        <van-grid-item>
+          微信二维码<br>
+          <van-image width="150" height="150" :src="wechat" />
+        </van-grid-item>
+        <!-- 123654 -->
+      </van-grid>
     </van-popup>
   </div>
 </template>
@@ -56,7 +67,10 @@ export default {
       cartList: [],
       // 地址信息
       address: {},
-      showPay: false
+      showPay: false,
+      orderNo: '',
+      aliyun: '',
+      wechat: ''
     })
     const init = () => {
       Toast.loading({ message: '加载中...', forbidClick: true })
@@ -88,13 +102,39 @@ export default {
         address_id: state.address.id
       }
       createOrder(params).then(res => {
-        console.log(res);
         Toast('创建订单成功')
-        store.dispatch('updateCart')
+        store.dispatch('updateCart') //改变vuex中的状态数量
         state.showPay = true
+        console.log('创建订单id', res.data[0].id);
+
+        // 订单ID
+        state.orderNo = res.data[0].id
+        // 阿里沙箱测试
+        payOrder(state.orderNo, { type: 'aliyun' }).then(res => {
+          console.log('二维码', res);
+          state.aliyun = res.qr_code_url
+          state.wechat = res.qr_code_url
+        })
+        //微信二维码
+        // payOrder(state.orderNo, { type: 'wechat' }).then(res => {
+        //   console.log('二维码', res);
+        // })
+        // 轮询查看
+        const timer = setInterval(() => {
+          payOrderStatus(state.orderNo).then(res => {
+
+            if (res == 2) {
+              clearInterval(timer)
+              router.push({ path: '/orderdetail', query: { id: state.orderNo } })
+            }
+          })
+        }, 2000);
       })
     }
-    const close = () => { }
+    const close = () => {
+
+      router.push({ path: '/orderdetail', query: { id: state.orderNo } })
+    }
     const total = computed(() => {
       let sum = 0
       state.cartList.forEach(item => {
