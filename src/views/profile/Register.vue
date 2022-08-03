@@ -3,9 +3,9 @@
     <nav-bar>
       <template v-slot:default>新用户注册</template>
     </nav-bar>
-    <div style="margin-top:50px;">
-      <div style="text-align:center;padding-top:50px;">
-        <van-image width="10rem" height="5rem" :src="require('../../../public/logo.jpg')" />
+    <div style="margin-top:50px;padding:15px;">
+      <div style="text-align:center;margin:40px auto;">
+        <van-image width="5rem" height="5rem" :src="require('../../../public/logo.jpg')" />
       </div>
       <van-form @submit="onSubmit">
         <van-cell-group inset>

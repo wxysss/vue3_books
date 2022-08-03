@@ -9,12 +9,8 @@
       <div class="content">
         <div ref="banref">
           <home-swiper :banners="banners"></home-swiper>
-          <!-- <div class="banners">
-            <img src="../../assets/image/004.jpg" alt="">
-          </div> -->
           <recommend-view :recommends='recommends'></recommend-view>
         </div>
-
         <tab-control @tabClick="tabClick" :titles="['畅销', '新书', '精选']"></tab-control>
         <goods-list :goods="showGoods"></goods-list>
       </div>

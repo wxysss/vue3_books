@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav-bar class="nav-bar">
-      <template v-slot:default>购物车{{$store.state.cartCount}}</template>
+      <template v-slot:default>购物车</template>
     </nav-bar>
     <div class="cart-box">
       <div class="cart-body">

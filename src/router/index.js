@@ -3,29 +3,42 @@ import {
   createWebHistory
 } from 'vue-router'
 import { Store } from 'vuex'
-// import HomeView from '../views/HomeView.vue'
+
+// 首页相关
 const Home = () => import('../views/home/Home.vue')
+// 分类相关
 const Category = () => import('../views/category/Categroy.vue')
 const Detil = () => import('../views/detail/Detail.vue')
+// 个人中心相关
 const Profile = () => import('../views/profile/Profile.vue')
-const ShopCart = () => import('../views/shopcar/ShopCar.vue')
-const Register = ()=>import ('../views/profile/Register.vue')
-const Login = ()=>import ('../views/profile/Login.vue')
-const AddressEdit = ()=>import ('../views/profile/AddressEdit.vue')
 const Address = ()=>import ('../views/profile/Address.vue')
+const AddressEdit = ()=>import ('../views/profile/AddressEdit.vue')
+
+const AboutUs = ()=>import ('../views/profile/AboutUs.vue')
+// 购物车相关
+const ShopCart = () => import('../views/shopcar/ShopCar.vue')
 const CreateOrder = ()=>import ('../views/order/CreateOrder.vue')
 const Order = ()=>import ('../views/order/Order.vue')
 const OrderDetail = ()=>import ('../views/order/OrderDetail.vue')
+// 登陆注册相关
+const Register = ()=>import ('../views/profile/Register.vue')
+const Login = ()=>import ('../views/profile/Login.vue')
 
 
-import { Notify,Toast } from "vant";
+
+
+
+
+import { Notify } from "vant";
 import store from '../store'
-const routes = [{
+const routes = [
+  // 首页相关
+  {
     path: '',
     name: 'home',
     component: Home, // 默认缺省路由
     meta: {
-      title: '图书'
+      title: '图书-首页'
     }
   },
   {
@@ -33,7 +46,7 @@ const routes = [{
     name: 'DefaultHome',
     component: Home, // 首页
     meta: {
-      title: '图书'
+      title: '图书-首页'
     }
   },
   {
@@ -115,6 +128,16 @@ const routes = [{
       isAuthRequired:true
     }
   },
+  {
+    path: '/aboutus',
+    name: 'AboutUs',
+    component: AboutUs, // 订单详情
+    meta: {
+      title: '图书-订单详情',
+      isAuthRequired:true
+    }
+  },
+  // 登录注册相关
   {
     path: '/register',
     name: 'Register',
