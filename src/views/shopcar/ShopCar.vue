@@ -42,7 +42,7 @@
 import { ref, reactive, toRefs, onMounted, computed } from 'vue'
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { getCart, deleteCartItem, checkedCart, modifyCart } from "../../network/Cart";
+import { getCart, deleteCartItem, checkedCart, modifyCart } from "network/Cart";
 import { Toast, Stepper } from 'vant';
 import NavBar from 'components/common/navbar/NavBar.vue';
 

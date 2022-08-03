@@ -17,7 +17,6 @@ export default {
     onMounted(() => {
       getHomeAllData().then(res => {
         banner.value = res.slides
-        // console.log(res);
       })
     })
 

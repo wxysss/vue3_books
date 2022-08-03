@@ -35,7 +35,7 @@ import {
 
 } from 'vue'
 import { useRouter } from 'vue-router'
-import { getCategory, getCategoryGoods } from "../../network/category";
+import { getCategory, getCategoryGoods } from "network/category";
 import BScroll from 'better-scroll'
 export default {
   name: 'Category',
@@ -69,7 +69,6 @@ export default {
       getCategoryGoods('comments_count', currentCid.value).then(res => {
         goods.comments_count.list = res.goods.data
       })
-      // console.log(res);
     }
     let bscroll = reactive({})
     onMounted(() => {
@@ -86,16 +85,10 @@ export default {
       })
       //  触发滚动事件
       bscroll.on('scroll', (position) => {
-        // console.log(-position.y);
-        // console.log(banref.value.offsetHeight);
         isShowBackTop.value = (-position.y) > 300
       })
       // 上拉加载数据，触发pulling
       bscroll.on('pullingUp', () => {
-        console.log('上拉加载更多...');
-        // // console.log(
-        // //   document.querySelector('.content').clientHeight
-        // // );
         const page = goods[currentOrder.value].page + 1
         getCategoryGoods(currentOrder.value, currentCid.value).then(res => {
           goods[currentOrder.value].list.push(...res.goods.data)
@@ -106,7 +99,6 @@ export default {
           //   bscroll && bscroll.refresh()
           // })
         })
-        // // console.log('type',currentType.value,'页面', page);
         // getHomeGoods(currentType.value, page).then(
         //   res => {
         //     goods[currentType.value].list.push(...res.goods.data)
@@ -134,16 +126,12 @@ export default {
           bscroll && bscroll.refresh()
         })
       })
-      // console.log('序号', currentOrder.value);
-      // console.log('过分类get商品', currentCid.value);
 
     }
     // 通过分类get商品
     const getGoods = (cid) => {
       currentCid.value = cid
       init();
-      // console.log('序号', currentOrder.value);
-      // console.log('过分类get商品', currentCid.value);
     }
     // 监听 任何一个变量有变化
     watchEffect(() => {

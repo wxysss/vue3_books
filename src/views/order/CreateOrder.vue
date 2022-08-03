@@ -93,6 +93,8 @@ export default {
 
     onMounted(() => {
       init()
+
+
     })
     const goTo = () => {
       router.push({ path: '/address' })
@@ -105,13 +107,11 @@ export default {
         Toast('创建订单成功')
         store.dispatch('updateCart') //改变vuex中的状态数量
         state.showPay = true
-        console.log('创建订单id', res.data[0].id);
-
         // 订单ID
-        state.orderNo = res.data[0].id
+        state.orderNo = res.id
+
         // 阿里沙箱测试
         payOrder(state.orderNo, { type: 'aliyun' }).then(res => {
-          console.log('二维码', res);
           state.aliyun = res.qr_code_url
           state.wechat = res.qr_code_url
         })
@@ -119,10 +119,10 @@ export default {
         // payOrder(state.orderNo, { type: 'wechat' }).then(res => {
         //   console.log('二维码', res);
         // })
+
         // 轮询查看
         const timer = setInterval(() => {
           payOrderStatus(state.orderNo).then(res => {
-
             if (res == 2) {
               clearInterval(timer)
               router.push({ path: '/orderdetail', query: { id: state.orderNo } })
@@ -132,7 +132,6 @@ export default {
       })
     }
     const close = () => {
-
       router.push({ path: '/orderdetail', query: { id: state.orderNo } })
     }
     const total = computed(() => {

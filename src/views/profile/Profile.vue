@@ -51,7 +51,7 @@
 <script>
 // import { reactive } from 'vue'
 import NavBar from 'components/common/navbar/NavBar.vue';
-import { logout, getUser } from "../../network/user";
+import { logout, getUser } from "network/user";
 import { Toast } from "vant";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
@@ -66,7 +66,6 @@ export default {
     })
     onMounted(() => {
       getUser().then(res => {
-        console.log(res);
         state.user = res
       })
     })

@@ -30,7 +30,7 @@ import RecommendView from "../home/ChildComps/RecommendView.vue";
 import TabControl from 'components/content/tabControl/TabControl.vue'
 import BackTop from 'components/common/backtop/BackTop.vue'
 import GoodsList from 'components/content/goods/GoodsList.vue';
-import { getHomeAllData, getHomeGoods } from "../../network/home";
+import { getHomeAllData, getHomeGoods } from "network/home";
 import BScroll from 'better-scroll'
 
 export default {
@@ -79,18 +79,11 @@ export default {
       })
       //  触发滚动事件
       bscroll.on('scroll', (position) => {
-        // console.log(-position.y);
-        // console.log(banref.value.offsetHeight);
         isShowBackTop.value = isTabFixed.value = (-position.y) > banref.value.offsetHeight
       })
       // 上拉加载数据，触发pulling
       bscroll.on('pullingUp', () => {
-        // console.log('上拉加载更多...');
-        // console.log(
-        //   document.querySelector('.content').clientHeight
-        // );
         const page = goods[currentType.value].page + 1
-        // console.log('type',currentType.value,'页面', page);
         getHomeGoods(currentType.value, page).then(
           res => {
             goods[currentType.value].list.push(...res.goods.data)

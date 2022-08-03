@@ -60,7 +60,6 @@ export default {
           }
           userinfo.password_confirmation = ''
           userinfo.password = ''
-          console.log(res);
         })
       }
     }

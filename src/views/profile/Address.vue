@@ -16,7 +16,7 @@
   <script>
 import { onMounted, reactive, toRefs } from 'vue';
 import NavBar from 'components/common/navbar/NavBar.vue';
-import { getAddressList } from '../../network/address'
+import { getAddressList } from 'network/address'
 import { useRoute, useRouter } from 'vue-router';
 export default {
   setup () {
@@ -41,7 +41,6 @@ export default {
             isDefault: !!item.is_default
           }
         })
-        console.log('列表', res.data);
       })
     })
     const onAdd = () => {

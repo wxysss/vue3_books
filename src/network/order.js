@@ -5,7 +5,7 @@ import {
 export function createOrder(params) {
   return request({
     url: '/api/orders',
-    methods: 'post',
+    method: 'post',
     params
   })
 }
@@ -33,9 +33,10 @@ export function payOrderStatus(order) {
 }
 
 // 获取订单列表{page：1,status：2,title,include:'goods,user,orderDetail.goods'}
-export function getOrderList(order) {
+export function getOrderList(params) {
   return request({
-    url:  `/api/orders`
+    url:  `/api/orders`,
+    params
     
   })
 }
@@ -55,7 +56,7 @@ export function getOrderDetail(order) {
 export function confirmOrder(order) {
   return request({
     url:  `/api/orders/${order}/confirm`,
-    methods:'patch'
+    method:'patch'
     
   })
 }

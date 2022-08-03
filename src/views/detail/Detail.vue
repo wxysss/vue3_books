@@ -52,7 +52,6 @@ export default {
     onMounted(() => {
       id.value = route.query.id
       getDetail(id.value).then(res => {
-        // console.log('res', res);
         book.detail = res.goods;
         book.like_goods = res.like_goods;
       })

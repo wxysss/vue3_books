@@ -13,7 +13,7 @@ import { onMounted, reactive, toRefs, computed } from 'vue';
 import NavBar from 'components/common/navbar/NavBar.vue';
 import { Toast } from 'vant'
 import { useRoute, useRouter } from 'vue-router';
-import { addAddress, EditAddress, DeleteAddress, getAddressList, getAddressDetail } from '../../network/address'
+import { addAddress, EditAddress, DeleteAddress, getAddressList, getAddressDetail } from 'network/address'
 // import { tdList } from '../../utils/address'
 import { areaList } from '@vant/area-data';
 export default {

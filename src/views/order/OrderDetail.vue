@@ -16,10 +16,8 @@
         <label>下单时间</label>
         <span>{{detail.created_at}}</span>
       </div>
-      <!-- v-if="detail.status == 1" -->
-      <van-button @click="showPayFn" style="margin:20px auto; " color="#42b983" block>去支付</van-button>
-      <!-- v-if="detail.status == 3" -->
-      <van-button block @click="handleConfirmOrder">确认订单</van-button>
+      <van-button v-if="detail.status == 1" @click="showPayFn" style="margin:20px auto; " color="#42b983" block>去支付</van-button>
+      <van-button v-if="detail.status == 3" block @click="handleConfirmOrder">确认订单</van-button>
     </div>
     <div class="order-price">
       <div class="price-item">
@@ -82,7 +80,6 @@ export default {
       const { id } = route.query
       state.orderNo = id
       getOrderDetail(id).then(res => {
-        console.log('获取详情', res);
         state.detail = res
       })
 
@@ -109,14 +106,12 @@ export default {
     const showPayFn = () => {
       state.showPay = true
       payOrder(state.orderNo, { type: 'aliyun' }).then(res => {
-        console.log('二维码', res);
         state.aliyun = res.qr_code_url
         state.wechat = res.qr_code_url
       })
       // 轮询查看
       const timer = setInterval(() => {
         payOrderStatus(state.orderNo).then(res => {
-          console.log('test');
           if (res == 2) {
             clearInterval(timer)
             router.push({ path: '/orderdetail', query: { id: state.orderNo } })
@@ -130,7 +125,6 @@ export default {
         title: '是否确认订单?'
       }).then(() => {
         confirmOrder(state.orderNo).then(res => {
-          console.log(res);
           Toast('确认成功')
           init()
         })
