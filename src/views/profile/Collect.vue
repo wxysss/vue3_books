@@ -1,9 +1,9 @@
 <template>
   <div>
     <nav-bar class="nav-bar">
-      <template v-slot:default> 关于我们</template>
-
+      <template v-slot:default>我的收藏</template>
     </nav-bar>
+
   </div>
 </template>
   <script>

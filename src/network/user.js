@@ -22,8 +22,17 @@ export  function logout(data) {
     method:'post'
   })
 }
+// 用户详情
 export  function getUser(data) {
   return request({
     url:'/api/user'
+  })
+}
+
+export  function changePassword(params) {
+  return request({
+    url:'/api/auth/password/update',
+    method:'post',
+    params
   })
 }

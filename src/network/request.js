@@ -32,8 +32,9 @@ export function request(config) {
     }
     // 如果有错误，这里面会去处理，显示错误信息
     // Notify(err.response.data.errors[Object.keys(err.response.data.errors)][0]);
-    Notify(err.message);
-    console.log(err.message);
+    // Notify(err.message);
+    // console.log(err.response.data.errors[Object.keys(err.response.data.errors)][0]);
+    console.log(err);
   })
   return instance(config)
 

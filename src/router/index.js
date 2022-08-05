@@ -11,22 +11,20 @@ const Category = () => import('../views/category/Categroy.vue')
 const Detil = () => import('../views/detail/Detail.vue')
 // 个人中心相关
 const Profile = () => import('../views/profile/Profile.vue')
-const Address = ()=>import ('../views/profile/Address.vue')
-const AddressEdit = ()=>import ('../views/profile/AddressEdit.vue')
-
-const AboutUs = ()=>import ('../views/profile/AboutUs.vue')
-// 购物车相关
-const ShopCart = () => import('../views/shopcar/ShopCar.vue')
 const CreateOrder = ()=>import ('../views/order/CreateOrder.vue')
 const Order = ()=>import ('../views/order/Order.vue')
 const OrderDetail = ()=>import ('../views/order/OrderDetail.vue')
+const Address = ()=>import ('../views/profile/Address.vue')
+const AddressEdit = ()=>import ('../views/profile/AddressEdit.vue')
+const Account = ()=>import ('../views/profile/Account.vue')
+const Collect = ()=>import ('../views/profile/Collect.vue')
+const AboutUs = ()=>import ('../views/profile/AboutUs.vue')
+// 购物车相关
+const ShopCart = () => import('../views/shopcar/ShopCar.vue')
+
 // 登陆注册相关
 const Register = ()=>import ('../views/profile/Register.vue')
 const Login = ()=>import ('../views/profile/Login.vue')
-
-
-
-
 
 
 import { Notify } from "vant";
@@ -49,6 +47,7 @@ const routes = [
       title: '图书-首页'
     }
   },
+  // 分类
   {
     path: '/category',
     name: 'Category',
@@ -65,15 +64,7 @@ const routes = [
       title: '图书-详情页'
     }
   },
-  {
-    path: '/profile',
-    name: 'Profile',
-    component: Profile, // 个人中心
-    meta: {
-      title: '图书-个人中心',
-      isAuthRequired:true
-    }
-  },
+   // 购物车
   {
     path: '/shopcart',
     name: 'ShopCart',
@@ -83,21 +74,13 @@ const routes = [
       isAuthRequired:true
     }
   },
+  // 我的部分
   {
-    path: '/address',
-    name: 'Address',
-    component: Address, // 地址列表
+    path: '/profile',
+    name: 'Profile',
+    component: Profile, // 个人中心
     meta: {
-      title: '图书-地址列表',
-      isAuthRequired:true
-    }
-  },
-  {
-    path: '/addressedit',
-    name: 'AddressEdit',
-    component: AddressEdit, // 地址编辑
-    meta: {
-      title: '图书-地址编辑',
+      title: '图书-个人中心',
       isAuthRequired:true
     }
   },
@@ -113,9 +96,9 @@ const routes = [
   {
     path: '/order',
     name: 'Order',
-    component: Order, // 订单
+    component: Order, // 我的订单
     meta: {
-      title: '图书-订单',
+      title: '图书-我的订单',
       isAuthRequired:true
     }
   },
@@ -129,11 +112,47 @@ const routes = [
     }
   },
   {
+    path: '/address',
+    name: 'Address',
+    component: Address, // 地址管理
+    meta: {
+      title: '图书-地址管理',
+      isAuthRequired:true
+    }
+  },
+  {
+    path: '/addressedit',
+    name: 'AddressEdit',
+    component: AddressEdit, // 地址编辑
+    meta: {
+      title: '图书-地址编辑',
+      isAuthRequired:true
+    }
+  },
+  {
     path: '/aboutus',
     name: 'AboutUs',
-    component: AboutUs, // 订单详情
+    component: AboutUs, // 关于我们
     meta: {
-      title: '图书-订单详情',
+      title: '图书-关于我们',
+      isAuthRequired:true
+    }
+  },
+  {
+    path: '/account',
+    name: 'Account',
+    component: Account, // 账号管理
+    meta: {
+      title: '图书-账号管理',
+      isAuthRequired:true
+    }
+  },
+  {
+    path: '/collect',
+    name: 'Collect',
+    component: Collect, // 我的收藏
+    meta: {
+      title: '图书-我的收藏',
       isAuthRequired:true
     }
   },

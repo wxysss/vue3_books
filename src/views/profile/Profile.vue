@@ -6,7 +6,7 @@
     <div class="user-box">
       <div class="user-info">
         <div class="info">
-          <img src="../../../public/logo.jpg" alt="">
+          <img :src="user.avatar_url" alt="">
           <div class="user-desc">
             <span>昵称: {{user.name}}</span>
             <span>登录名: {{user.email}}</span>
@@ -27,7 +27,7 @@
           <van-icon name="arrow" />
         </li>
         <li class="van-hairline--bottom" @click="
-        goTo('/setting')">
+        goTo('/account')">
           <span>账号管理</span>
           <van-icon name="arrow" />
         </li>
@@ -37,7 +37,7 @@
           <van-icon name="arrow" />
         </li>
         <li class="van-hairline--bottom" @click="
-        goTo('/about')">
+        goTo('/aboutus')">
           <span>关于我们</span>
           <van-icon name="arrow" />
         </li>
@@ -56,6 +56,7 @@ import { Toast } from "vant";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { onMounted, reactive, toRefs } from 'vue';
+
 export default {
   name: 'Profile',
   setup () {
@@ -66,6 +67,7 @@ export default {
     })
     onMounted(() => {
       getUser().then(res => {
+        console.log('个人信息详情', res);
         state.user = res
       })
     })
@@ -104,7 +106,7 @@ export default {
   height: 100vh;
 }
 .user-box {
-  margin-top: 65px;
+  // margin-top: 65px;
   .user-header {
     position: fixed;
     top: 0;
@@ -136,6 +138,7 @@ export default {
       width: 100%;
       height: 100%;
       padding: 25px 20px;
+      box-sizing: border-box;
       img {
         width: 60px;
         height: 60px;
@@ -171,6 +174,7 @@ export default {
   }
   .user-list {
     padding: 0 8px;
+    box-sizing: border-box;
     margin-top: 40px;
     li {
       padding-left: 5px;
